@@ -1,7 +1,7 @@
 $(document).ready(function() {
     var compGuess = Math.floor((Math.random() * 100) + 1);
     console.log("the computer guesses " + compGuess)
-    var numberOfGuesses = 1;
+    var numberOfGuesses = 0;
     var guesses = [];
 
 
@@ -33,14 +33,15 @@ $(document).ready(function() {
         var difference = Math.abs(compGuess - guess);
         console.log(difference);
         
-       	if (Number.isNaN(guess) || guess >= 100) {
+       	if (Number.isNaN(guess) || guess >= 101) {
             $('#error').show();
             $('#feedback').hide();
         } 
         else 
         	{
             $('#guessList').append(guessLi);
-            $('#count').text(numberOfGuesses++);
+            numberOfGuesses++;
+            $('#count').text(numberOfGuesses);
 
             if (guess === compGuess) {
                 $('#feedback').text('yay');
